@@ -13,8 +13,6 @@
 
     <VBox>
 
-        <Label fx:id="nombreLabel" GridPane.rowIndex="0" alignment="CENTER" maxWidth="Infinity"/>
-
         <GridPane fx:id="botoneraGridPane" GridPane.valignment="CENTER">
 
             <!--<columnConstraints>-->
@@ -23,7 +21,7 @@
                 <!--<ColumnConstraints percentWidth="50.0"/>-->
             <!--</columnConstraints>-->
 
-            <GridPane GridPane.columnIndex="0">
+            <!--<GridPane GridPane.columnIndex="0">
 
                 <GridPane GridPane.rowIndex="0" GridPane.halignment="center">
                     <ProgressBar fx:id="vidaProgressBar" GridPane.rowIndex="0"/>
@@ -35,7 +33,7 @@
                     <Image url="/vista/imagenes/Espadachin_blue.png"/>
                 </ImageView>
 
-            </GridPane>
+            </GridPane>-->
 
             <fx:include fx:id="botoneraMovimiento" source="MovimientoBotonera.fxml" GridPane.columnIndex="1"/>
 

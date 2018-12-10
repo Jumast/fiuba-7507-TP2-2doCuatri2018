@@ -35,6 +35,7 @@ public class PosicionableController implements IPosicionableController {
         return color;
     }
 
+
     @Override
     public void handleClick(MouseEvent mouseEvent) {
         ScrollPane pane = this.scrollPane;

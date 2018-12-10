@@ -23,6 +23,8 @@ import modelo.unidades.UnidadesFabrica;
 import vista.PosicionableControllerFactory;
 import javafx.scene.control.Button;
 import vista.controladores.*;
+
+import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -39,6 +41,7 @@ public class JuegoControl extends BorderPane implements Initializable, IJuegoCon
     private Turno turno;
 
     @FXML private GridPane botonera;
+    @FXML private GridPane imagen;
     @FXML private Button pasarTurno;
     @FXML private Text fichaTecnica;
 
@@ -101,9 +104,21 @@ public class JuegoControl extends BorderPane implements Initializable, IJuegoCon
 
     }
 
+    @Override
     public void setBotonera(Node node){
         this.botonera.getChildren().clear();
         this.botonera.add(node, 1, 0);
+    }
+
+    @Override
+    public void cleanBotonera(){
+        this.botonera.getChildren().clear();
+    }
+
+    @Override
+    public void setImagen(Node node){
+        this.imagen.getChildren().clear();
+        this.imagen.add(node, 1, 0);
     }
 
     private void inicializarJugador1(String nombreJugador){
@@ -134,7 +149,7 @@ public class JuegoControl extends BorderPane implements Initializable, IJuegoCon
 
         this.listaDeParticipantes.add(jugador);
 
-        PosicionableControllerFactory controllerFactory = new PosicionableControllerFactory(this, this.mapaControl, "red");
+        PosicionableControllerFactory controllerFactory = new PosicionableControllerFactory(this, this.mapaControl, "red", nombreJugador);
         IPosicionableController castilloController = controllerFactory.crearControlador(castillo);
         IPosicionableController plazaCentralController = controllerFactory.crearControlador(plazaCentral);
         IPosicionableController aldeano1Controller = controllerFactory.crearControlador(aldeano1);
@@ -188,7 +203,7 @@ public class JuegoControl extends BorderPane implements Initializable, IJuegoCon
 
         this.listaDeParticipantes.add(jugador);
 
-        PosicionableControllerFactory controllerFactory = new PosicionableControllerFactory(this, this.mapaControl, "blue");
+        PosicionableControllerFactory controllerFactory = new PosicionableControllerFactory(this, this.mapaControl, "blue", nombreJugador2);
         IPosicionableController castilloController = controllerFactory.crearControlador(castillo);
         IPosicionableController plazaCentralController = controllerFactory.crearControlador(plazaCentral);
         IPosicionableController aldeano1Controller = controllerFactory.crearControlador(aldeano1);
@@ -214,6 +229,14 @@ public class JuegoControl extends BorderPane implements Initializable, IJuegoCon
     public void cambioDeTurno(){
         this.turno.cambiarDeTurno();
         this.fichaTecnica.setText(this.turno.devolverJugadorActual());
-
+        this.imagen.getChildren().clear();
+        this.botonera.getChildren().clear();
     }
+
+    @Override
+    public boolean esDelJugador(String dueño){
+        return (this.turno.devolverJugadorActual() == dueño);
+    }
+
+
 }

@@ -16,15 +16,17 @@
 
             <columnConstraints>
                 <ColumnConstraints percentWidth="20.0"/>
-                <ColumnConstraints percentWidth="40.0"/>
-                <ColumnConstraints percentWidth="30.0"/>
                 <ColumnConstraints percentWidth="10.0"/>
+                <ColumnConstraints percentWidth="30.0"/>
+                <ColumnConstraints percentWidth="20.0"/>
+                <ColumnConstraints percentWidth="20.0"/>
             </columnConstraints>
 
             <fx:include fx:id="miniMapa" source="MiniMapa.fxml" GridPane.columnIndex="0"/>
-            <GridPane fx:id="botonera" GridPane.columnIndex="1"/>
-            <Button fx:id="pasarTurno" GridPane.columnIndex="2"  onMouseClicked="#cambioDeTurno">Pasar turno</Button>
-            <Text fx:id="fichaTecnica" GridPane.columnIndex="3"></Text>
+            <GridPane fx:id="botonera" GridPane.columnIndex="2"/>
+            <GridPane fx:id="imagen" GridPane.columnIndex="1"/>
+            <Button fx:id="pasarTurno" GridPane.columnIndex="3"  onMouseClicked="#cambioDeTurno">Pasar turno</Button>
+            <Text fx:id="fichaTecnica" GridPane.columnIndex="4"></Text>
 
 
 

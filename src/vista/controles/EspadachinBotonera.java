@@ -18,18 +18,18 @@ import java.util.ResourceBundle;
 public class EspadachinBotonera extends GridPane implements Initializable {
 
     private final Espadachin espadachin;
-    private double vidaInicial;
+    //private double vidaInicial;
     private MapaControl mapa;
 
-    @FXML private ProgressBar vidaProgressBar;
-    @FXML private Label vidaLabel;
-    @FXML private Label nombreLabel;
+    //@FXML private ProgressBar vidaProgressBar;
+   // @FXML private Label vidaLabel;
+    //@FXML private Label nombreLabel;
 
     public EspadachinBotonera(Espadachin espadachin, MapaControl mapa){
 
         super();
         this.espadachin = espadachin;
-        this.vidaInicial = espadachin.getVida();
+        //this.vidaInicial = espadachin.getVida();
         this.mapa = mapa;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/vistas/EspadachinBotonera.fxml"));
@@ -64,9 +64,9 @@ public class EspadachinBotonera extends GridPane implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.setVidaLabel();
-        this.vidaProgressBar.setProgress(this.obtenerProgresoDeVida());
-        this.nombreLabel.setText(this.espadachin.getClass().getSimpleName());
+        //this.setVidaLabel();
+        //this.vidaProgressBar.setProgress(this.obtenerProgresoDeVida());
+        //this.nombreLabel.setText(this.espadachin.getClass().getSimpleName());
     }
 
 
@@ -78,7 +78,7 @@ public class EspadachinBotonera extends GridPane implements Initializable {
         mapa.estadoSeleccionable();
     }
 
-    private double obtenerProgresoDeVida(){
+   /* private double obtenerProgresoDeVida(){
         return this.espadachin.getVida() / this.vidaInicial;
     }
     private void setVidaLabel(){
@@ -93,7 +93,7 @@ public class EspadachinBotonera extends GridPane implements Initializable {
     public void actualizarUI(){
         this.vidaProgressBar.setProgress(this.obtenerProgresoDeVida());
         this.setVidaLabel();
-    }
+    }*/
 
 
 }
