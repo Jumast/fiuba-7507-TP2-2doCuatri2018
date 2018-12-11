@@ -43,7 +43,7 @@ public class ArmaDeAsedioController implements IPosicionableController, Initiali
         this.dueño = dueño;
 
         this.botonera = new ArmaDeAsedioBotonera(armaDeAsedio, mapaControl, this);
-        this.imagen = new ArmaDeAsedioImagen(this.armaDeAsedio);
+        this.imagen = new ArmaDeAsedioImagen(armaDeAsedio);
     }
 
     @Override

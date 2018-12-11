@@ -105,7 +105,6 @@ public class JuegoControl extends BorderPane implements Initializable, IJuegoCon
     }
 
 
-
     @Override
     public void setBotonera(Node node){
         this.botonera.getChildren().clear();

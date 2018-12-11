@@ -7,8 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.GridPane;
 import modelo.unidades.ArmaDeAsedio;
-import vista.controladores.ArmaDeAsedioController;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -16,7 +16,6 @@ public class ArmaDeAsedioImagen extends GridPane implements Initializable {
 
     private final ArmaDeAsedio armaDeAsedio;
     private double vidaInicial;
-    private ArmaDeAsedioController controller;
 
     @FXML private ProgressBar vidaProgressBar;
     @FXML private Label vidaLabel;
@@ -32,6 +31,12 @@ public class ArmaDeAsedioImagen extends GridPane implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/vistas/ArmaDeAsedioImagen.fxml"));
         loader.setRoot(this);
         loader.setController(this);
+        try {
+            loader.load();
+        }
+        catch (IOException e){
+            throw new RuntimeException(e);
+        }
 
     }
 
