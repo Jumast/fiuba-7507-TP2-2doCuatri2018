@@ -33,7 +33,7 @@ public class ArmaDeAsedioController implements IPosicionableController, Initiali
     private String dueño;
     private final ArmaDeAsedioImagen imagen;
 
-    private String estado = "";
+    private String estado = "seleccionable";
 
     public ArmaDeAsedioController(ArmaDeAsedio armaDeAsedio, String color, MapaControl mapaControl, IJuegoController juegoController, String dueño){
         this.armaDeAsedio = armaDeAsedio;
@@ -76,7 +76,7 @@ public class ArmaDeAsedioController implements IPosicionableController, Initiali
 
         else {
             if (this.estado.equals("ataquePotencial")) {
-                this.estado = "";
+                this.estado = "seleccionable";
                 try {
                     this.atacante.atacar(this.armaDeAsedio);
                     new Alert(Alert.AlertType.INFORMATION, "Ataque concretado").show();
@@ -120,7 +120,9 @@ public class ArmaDeAsedioController implements IPosicionableController, Initiali
     }
 
     public void estadoSeleccionable(){
+        this.estado = "seleccionable";
     }
+
 
     public void montar(){
         this.imageView.getStyleClass().clear();

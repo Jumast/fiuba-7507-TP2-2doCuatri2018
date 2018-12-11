@@ -60,7 +60,9 @@ public class AldeanoController implements IPosicionableController, Initializable
         this.estado = "ataquePotencial";
     }
     public void estadoSeleccionable(){
+        this.estado = "seleccionable";
     }
+
 
     @Override
     public IPosicionable getPosicionable() {
