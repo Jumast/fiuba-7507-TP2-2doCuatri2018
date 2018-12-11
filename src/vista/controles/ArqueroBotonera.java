@@ -17,19 +17,12 @@ import java.util.ResourceBundle;
 public class ArqueroBotonera extends GridPane implements Initializable {
 
     private final Arquero arquero;
-    private double vidaInicial;
     private MapaControl mapa;
-
-    @FXML
-    private ProgressBar vidaProgressBar;
-    @FXML private Label vidaLabel;
-    @FXML private Label nombreLabel;
 
     public ArqueroBotonera(Arquero arquero, MapaControl mapa){
 
         super();
         this.arquero = arquero;
-        this.vidaInicial = arquero.getVida();
         this.mapa = mapa;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/vistas/ArqueroBotonera.fxml"));
@@ -64,9 +57,6 @@ public class ArqueroBotonera extends GridPane implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.setVidaLabel();
-        this.vidaProgressBar.setProgress(this.obtenerProgresoDeVida());
-        this.nombreLabel.setText(this.arquero.getClass().getSimpleName());
     }
 
 
@@ -94,26 +84,6 @@ public class ArqueroBotonera extends GridPane implements Initializable {
 
     public void handleCancelar(){
         mapa.estadoSeleccionable();
-    }
-
-    private double obtenerProgresoDeVida(){
-        return this.arquero.getVida() / this.vidaInicial;
-    }
-    private void setVidaLabel(){
-        String vidaInicial = String.valueOf((int)this.vidaInicial);
-        String vidaActual = String.valueOf(this.arquero.getVida());
-        String texto = String.format("Vida: %s/%s", vidaActual, vidaInicial);
-
-        this.vidaLabel.setText(texto);
-
-    }
-
-    public void actualizarUI(){
-        this.vidaProgressBar.setProgress(this.obtenerProgresoDeVida());
-        this.setVidaLabel();
-    }
-
-
-
+    };
 
 }

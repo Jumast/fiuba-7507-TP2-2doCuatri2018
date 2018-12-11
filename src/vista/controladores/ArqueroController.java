@@ -12,13 +12,14 @@ import modelo.IPosicionable;
 import modelo.posicion.Posicion;
 import modelo.unidades.Arquero;
 import vista.controles.ArqueroBotonera;
+import vista.controles.ArqueroImagen;
+import vista.controles.EspadachinImagen;
 import vista.controles.MapaControl;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ArqueroController implements IPosicionableController, Initializable {
-
 
     @FXML
     private GridPane root;
@@ -30,17 +31,20 @@ public class ArqueroController implements IPosicionableController, Initializable
     private MapaControl mapaControl;
     private IJuegoController juegoController;
     private IAtacante atacante;
+    private String dueño;
+    private final ArqueroImagen imagen;
 
-    private String estado = "seleccionable";
+    private String estado = "";
 
-    public ArqueroController(Arquero arquero, String color, MapaControl mapaControl, IJuegoController juegoController){
+    public ArqueroController(Arquero arquero, String color, MapaControl mapaControl, IJuegoController juegoController, String dueño){
         this.arquero = arquero;
         this.color = color;
         this.mapaControl = mapaControl;
         this.juegoController = juegoController;
-
+        this.dueño = dueño;
 
         this.botonera = new ArqueroBotonera(arquero, mapaControl);
+        this.imagen = new ArqueroImagen((this.arquero));
     }
 
     @Override
@@ -65,7 +69,7 @@ public class ArqueroController implements IPosicionableController, Initializable
     }
 
     public void handleClick(MouseEvent mouseEvent) {
-        if(this.estado.equals("seleccionable")){
+        /*if(this.estado.equals("seleccionable")){
             this.juegoController.setBotonera(botonera);
         }
 
@@ -85,6 +89,33 @@ public class ArqueroController implements IPosicionableController, Initializable
             finally {
                 this.mapaControl.estadoSeleccionable();
             }
+        }*/
+        this.juegoController.setImagen(this.imagen);
+
+        if( (this.juegoController.esDelJugador(this.dueño)) ){
+            this.juegoController.setBotonera(this.botonera);
+            this.estado = "";
+        }
+
+        else {
+            if (this.estado.equals("ataquePotencial")) {
+                this.estado = "";
+                try {
+                    this.atacante.atacar(this.arquero);
+                    new Alert(Alert.AlertType.INFORMATION, "Ataque concretado").show();
+                    this.playSound();
+                    this.imagen.actualizarUI();
+                }
+
+                catch (Exception e) {
+                    new Alert(Alert.AlertType.INFORMATION, e.getMessage()).show();
+                }
+
+                finally {
+                    this.mapaControl.estadoSeleccionable();
+                }
+            }
+            this.juegoController.cleanBotonera();
         }
     }
 
