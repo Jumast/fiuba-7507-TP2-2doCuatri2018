@@ -17,12 +17,7 @@ import java.util.ResourceBundle;
 public class EspadachinBotonera extends GridPane implements Initializable {
 
     private final Espadachin espadachin;
-    //private double vidaInicial;
     private MapaControl mapa;
-
-    //@FXML private ProgressBar vidaProgressBar;
-   // @FXML private Label vidaLabel;
-    //@FXML private Label nombreLabel;
 
     public EspadachinBotonera(Espadachin espadachin, MapaControl mapa){
 

@@ -13,29 +13,7 @@
 
     <VBox>
 
-        <Label fx:id="nombreLabel" GridPane.rowIndex="0" alignment="CENTER" maxWidth="Infinity"/>
-
         <GridPane fx:id="botoneraGridPane" GridPane.valignment="CENTER">
-
-            <!--<columnConstraints>-->
-            <!--<ColumnConstraints percentWidth="50.0"/>-->
-            <!--<ColumnConstraints percentWidth="50.0"/>-->
-            <!--<ColumnConstraints percentWidth="50.0"/>-->
-            <!--</columnConstraints>-->
-
-            <GridPane GridPane.columnIndex="0">
-
-                <GridPane GridPane.rowIndex="0" GridPane.halignment="center">
-                    <ProgressBar fx:id="vidaProgressBar" GridPane.rowIndex="0"/>
-                    <Label fx:id="vidaLabel" GridPane.halignment="CENTER"/>
-                </GridPane>
-
-                <ImageView fx:id="imagenPosicionable" GridPane.rowIndex="1" fitHeight="60" fitWidth="40"
-                           style="-fx-padding: 5" GridPane.halignment="CENTER">
-                    <Image url="/vista/imagenes/ArmaDeAsedio_desmontada_blue.png"/>
-                </ImageView>
-
-            </GridPane>
 
             <fx:include fx:id="botoneraMovimiento" source="MovimientoBotonera.fxml" GridPane.columnIndex="1"/>
 
@@ -45,8 +23,6 @@
                 <Button fx:id="buttonMontar" onMouseClicked="#handleMontar">Montar</Button>
                 <Button fx:id="buttonDesmontar" onMouseClicked="#handleDesmontar">Desmontar</Button>
             </VBox>
-
-
 
         </GridPane>
     </VBox>

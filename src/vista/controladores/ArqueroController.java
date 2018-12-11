@@ -69,32 +69,10 @@ public class ArqueroController implements IPosicionableController, Initializable
     }
 
     public void handleClick(MouseEvent mouseEvent) {
-        /*if(this.estado.equals("seleccionable")){
-            this.juegoController.setBotonera(botonera);
-        }
-
-        if(this.estado.equals("ataquePotencial")){
-
-            try {
-                this.atacante.atacar(this.arquero);
-                new Alert(Alert.AlertType.INFORMATION, "Ataque concretado").show();
-                this.playSound();
-                this.botonera.actualizarUI();
-            }
-            catch (Exception e){
-                new Alert(Alert.AlertType.INFORMATION, e.getMessage()).show();
-
-            }
-
-            finally {
-                this.mapaControl.estadoSeleccionable();
-            }
-        }*/
         this.juegoController.setImagen(this.imagen);
 
         if( (this.juegoController.esDelJugador(this.dueño)) ){
             this.juegoController.setBotonera(this.botonera);
-            this.estado = "";
         }
 
         else {

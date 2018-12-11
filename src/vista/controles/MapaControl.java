@@ -221,6 +221,7 @@ public class MapaControl extends ScrollPane {
             controller.estadoSeleccionable();
         }
     }
+
     public void dragDropped(DragEvent event) throws IOException {
         Dragboard db = event.getDragboard();
 

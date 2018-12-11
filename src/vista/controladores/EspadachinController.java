@@ -48,7 +48,7 @@ public class EspadachinController implements IPosicionableController, Initializa
 
 
         this.botonera = new EspadachinBotonera(espadachin, mapaControl);
-        this.imagen = new EspadachinImagen(espadachin);
+        this.imagen = new EspadachinImagen(this.espadachin);
     }
 
     @Override
@@ -77,7 +77,6 @@ public class EspadachinController implements IPosicionableController, Initializa
 
         if( (this.juegoController.esDelJugador(this.dueño)) ){
             this.juegoController.setBotonera(this.botonera);
-            this.estado = "";
         }
 
         else {

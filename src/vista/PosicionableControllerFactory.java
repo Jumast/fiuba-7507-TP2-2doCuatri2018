@@ -50,7 +50,7 @@ public class PosicionableControllerFactory {
     }
 
     public IPosicionableController crearControlador(ArmaDeAsedio armaDeAsedio){
-        return new ArmaDeAsedioController(armaDeAsedio, this.color, this.mapaControl, this.juegoControl);
+        return new ArmaDeAsedioController(armaDeAsedio, this.color, this.mapaControl, this.juegoControl, this.dueño);
     }
 
 }

@@ -12,6 +12,8 @@ import modelo.IPosicionable;
 import modelo.posicion.Posicion;
 import modelo.unidades.ArmaDeAsedio;
 import vista.controles.ArmaDeAsedioBotonera;
+import vista.controles.ArmaDeAsedioImagen;
+import vista.controles.EspadachinImagen;
 import vista.controles.MapaControl;
 
 import java.net.URL;
@@ -19,11 +21,8 @@ import java.util.ResourceBundle;
 
 public class ArmaDeAsedioController implements IPosicionableController, Initializable {
 
-
-    @FXML
-    private GridPane root;
+    @FXML private GridPane root;
     @FXML private ImageView imageView;
-
 
     private final ArmaDeAsedioBotonera botonera;
     private ArmaDeAsedio armaDeAsedio;
@@ -31,17 +30,20 @@ public class ArmaDeAsedioController implements IPosicionableController, Initiali
     private MapaControl mapaControl;
     private IJuegoController juegoController;
     private IAtacante atacante;
+    private String dueño;
+    private final ArmaDeAsedioImagen imagen;
 
-    private String estado = "seleccionable";
+    private String estado = "";
 
-    public ArmaDeAsedioController(ArmaDeAsedio armaDeAsedio, String color, MapaControl mapaControl, IJuegoController juegoController){
+    public ArmaDeAsedioController(ArmaDeAsedio armaDeAsedio, String color, MapaControl mapaControl, IJuegoController juegoController, String dueño){
         this.armaDeAsedio = armaDeAsedio;
         this.color = color;
         this.mapaControl = mapaControl;
         this.juegoController = juegoController;
-
+        this.dueño = dueño;
 
         this.botonera = new ArmaDeAsedioBotonera(armaDeAsedio, mapaControl, this);
+        this.imagen = new ArmaDeAsedioImagen(this.armaDeAsedio);
     }
 
     @Override
@@ -66,26 +68,31 @@ public class ArmaDeAsedioController implements IPosicionableController, Initiali
     }
 
     public void handleClick(MouseEvent mouseEvent) {
-        if(this.estado.equals("seleccionable")){
-            this.juegoController.setBotonera(botonera);
+        this.juegoController.setImagen(this.imagen);
+
+        if( (this.juegoController.esDelJugador(this.dueño)) ){
+            this.juegoController.setBotonera(this.botonera);
         }
 
-        if(this.estado.equals("ataquePotencial")){
+        else {
+            if (this.estado.equals("ataquePotencial")) {
+                this.estado = "";
+                try {
+                    this.atacante.atacar(this.armaDeAsedio);
+                    new Alert(Alert.AlertType.INFORMATION, "Ataque concretado").show();
+                    this.playSound();
+                    this.imagen.actualizarUI();
+                }
 
-            try {
-                this.atacante.atacar(this.armaDeAsedio);
-                new Alert(Alert.AlertType.INFORMATION, "Ataque concretado").show();
-                this.playSound();
-                this.botonera.actualizarUI();
-            }
-            catch (Exception e){
-                new Alert(Alert.AlertType.INFORMATION, e.getMessage()).show();
+                catch (Exception e) {
+                    new Alert(Alert.AlertType.INFORMATION, e.getMessage()).show();
+                }
 
+                finally {
+                    this.mapaControl.estadoSeleccionable();
+                }
             }
-
-            finally {
-                this.mapaControl.estadoSeleccionable();
-            }
+            this.juegoController.cleanBotonera();
         }
     }
 
@@ -113,7 +120,6 @@ public class ArmaDeAsedioController implements IPosicionableController, Initiali
     }
 
     public void estadoSeleccionable(){
-        this.estado = "seleccionable";
     }
 
     public void montar(){

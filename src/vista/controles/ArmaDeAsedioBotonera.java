@@ -76,9 +76,6 @@ public class ArmaDeAsedioBotonera extends GridPane implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.setVidaLabel();
-        this.vidaProgressBar.setProgress(this.obtenerProgresoDeVida());
-        this.nombreLabel.setText(this.armaDeAsedio.getClass().getSimpleName());
 
         this.buttonAtacar.setDisable(true);
         this.buttonMontar.setDisable(false);
@@ -125,7 +122,7 @@ public class ArmaDeAsedioBotonera extends GridPane implements Initializable {
         this.controller.montar();
     }
 
-    public void handleDesmontar(){
+    public void handleDesmontar() {
         this.armaDeAsedio.desmontar();
         this.montada = false;
 
@@ -135,24 +132,5 @@ public class ArmaDeAsedioBotonera extends GridPane implements Initializable {
 
         controller.desmontar();
     }
-
-
-    private double obtenerProgresoDeVida(){
-        return this.armaDeAsedio.getVida() / this.vidaInicial;
-    }
-    private void setVidaLabel(){
-        String vidaInicial = String.valueOf((int)this.vidaInicial);
-        String vidaActual = String.valueOf(this.armaDeAsedio.getVida());
-        String texto = String.format("Vida: %s/%s", vidaActual, vidaInicial);
-
-        this.vidaLabel.setText(texto);
-
-    }
-
-    public void actualizarUI(){
-        this.vidaProgressBar.setProgress(this.obtenerProgresoDeVida());
-        this.setVidaLabel();
-    }
-
 
 }
