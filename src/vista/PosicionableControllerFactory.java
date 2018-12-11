@@ -4,6 +4,8 @@ import modelo.IPosicionable;
 import modelo.edificios.Castillo;
 import modelo.edificios.PlazaCentral;
 import modelo.unidades.Aldeano;
+import modelo.unidades.ArmaDeAsedio;
+import modelo.unidades.Arquero;
 import modelo.unidades.Espadachin;
 import vista.controladores.*;
 import vista.controles.JuegoControl;
@@ -41,6 +43,14 @@ public class PosicionableControllerFactory {
 
     public IPosicionableController crearControlador(Espadachin espadachin){
         return new EspadachinController(espadachin, this.color, this.mapaControl, this.juegoControl, this.dueño);
+    }
+
+    public IPosicionableController crearControlador(Arquero arquero){
+        return new ArqueroController(arquero, this.color, this.mapaControl, this.juegoControl);
+    }
+
+    public IPosicionableController crearControlador(ArmaDeAsedio armaDeAsedio){
+        return new ArmaDeAsedioController(armaDeAsedio, this.color, this.mapaControl, this.juegoControl);
     }
 
 }

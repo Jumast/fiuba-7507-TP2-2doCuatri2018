@@ -7,6 +7,7 @@ import modelo.IPosicionable;
 import modelo.posicion.Posicion;
 
 public interface IPosicionableController {
+
     IPosicionable getPosicionable();
     Posicion getPosicion();
     String getColor();

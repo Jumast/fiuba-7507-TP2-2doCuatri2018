@@ -7,19 +7,19 @@ import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.AudioClip;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import modelo.edificios.Castillo;
+import modelo.edificios.EstrategiaAtaqueArmaDeAsedio;
 import modelo.edificios.EstrategiaAtaqueCastillo;
 import modelo.edificios.PlazaCentral;
 import modelo.juego.Juego;
 import modelo.juego.Jugador;
 import modelo.juego.Turno;
 import modelo.posicion.*;
-import modelo.unidades.Aldeano;
-import modelo.unidades.Espadachin;
-import modelo.unidades.EstrategiaAtaqueEspadachin;
-import modelo.unidades.UnidadesFabrica;
+import modelo.unidades.*;
 import vista.PosicionableControllerFactory;
 import javafx.scene.control.Button;
 import vista.controladores.*;
@@ -101,8 +101,9 @@ public class JuegoControl extends BorderPane implements Initializable, IJuegoCon
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
+
+
 
     @Override
     public void setBotonera(Node node){
@@ -170,6 +171,22 @@ public class JuegoControl extends BorderPane implements Initializable, IJuegoCon
 
         IPosicionableController espadachinController = controllerFactory.crearControlador(espadachin);
         this.mapaControl.agregar(espadachinController);
+
+        // Arquero
+        Posicion posicionArquero = new PosicionDeUnCasillero(mapa, 8,8);
+        Arquero arquero = new Arquero(posicionArquero, new EstrategiaAtaqueArquero());
+        mapa.posicionar(arquero);
+
+        IPosicionableController arqueroController = controllerFactory.crearControlador(arquero);
+        this.mapaControl.agregar(arqueroController);
+
+        // ArmaDeAsedio
+        Posicion posicionArmaDeAsedio = new PosicionDeUnCasillero(mapa, 8,9);
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(posicionArmaDeAsedio, new EstrategiaAtaqueArmaDeAsedio());
+        mapa.posicionar(armaDeAsedio);
+
+        IPosicionableController armaDeAsedioController = controllerFactory.crearControlador(armaDeAsedio);
+        this.mapaControl.agregar(armaDeAsedioController);
     }
 
     private void inicializarJugador2(String nombreJugador2){

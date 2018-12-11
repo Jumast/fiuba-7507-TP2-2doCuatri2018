@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.ProgressBar?>
+<fx:root type="GridPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+         onMouseClicked="#handleClick">
+
+    <columnConstraints>
+        <ColumnConstraints percentWidth="100"/>
+    </columnConstraints>
+
+    <rowConstraints>
+        <RowConstraints percentHeight="100"/>
+    </rowConstraints>
+
+    <GridPane fx:id="root" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="100"/>
+        </columnConstraints>
+
+        <rowConstraints>
+            <RowConstraints percentHeight="100"/>
+        </rowConstraints>
+
+        <ImageView fx:id="imageView" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.halignment="CENTER"/>
+    </GridPane>
+
+
+
+    <stylesheets>
+        <URL value="@../css/Posicionable.css"/>
+    </stylesheets>
+
+</fx:root>

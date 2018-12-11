@@ -15,7 +15,19 @@
     </top>
 
     <bottom>
-        <GridPane GridPane.rowIndex="1" BorderPane.alignment="center" alignment="CENTER">
+        <GridPane GridPane.rowIndex="1" BorderPane.alignment="CENTER" alignment="CENTER">
+
+            <columnConstraints>
+                <ColumnConstraints/>
+                <ColumnConstraints/>
+                <ColumnConstraints/>
+            </columnConstraints>
+
+            <rowConstraints>
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
+            </rowConstraints>
 
             <Button text="↖" GridPane.rowIndex="0" GridPane.columnIndex="0" onMouseClicked="#handleIzquierdaArriba"/>
             <Button text="⬆" GridPane.rowIndex="0" GridPane.columnIndex="1" onMouseClicked="#handleArriba"/>

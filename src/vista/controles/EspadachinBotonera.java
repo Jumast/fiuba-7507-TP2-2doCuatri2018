@@ -6,9 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.GridPane;
-import modelo.unidades.Aldeano;
+import javafx.scene.media.AudioClip;
 import modelo.unidades.Espadachin;
-import vista.controladores.IPosicionController;
 import vista.controladores.MovimientoController;
 
 import java.io.IOException;
@@ -72,6 +71,25 @@ public class EspadachinBotonera extends GridPane implements Initializable {
 
     public void handleAtaque(){
         mapa.estadoAtaque(this.espadachin);
+        this.playSound();
+    }
+
+    private void playSound(){
+
+        try
+        {
+
+            String file = "/vista/sonidos/ataque_espadachin.wav";
+            URL path = getClass().getResource(file);
+            AudioClip ac = new AudioClip(path.toString());
+            ac.setVolume(1);
+            ac.play();
+
+        }
+        catch (Exception e)
+        {
+            throw new RuntimeException(e);
+        }
     }
 
     public void handleCancelar(){

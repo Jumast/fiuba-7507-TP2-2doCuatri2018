@@ -16,7 +16,7 @@ class ArmaDeAsedioDesmontadaState implements IArmaDeAsedioState {
 
     @Override
     public void atacar(IAtacable atacable) {
-        throw new OperacionInvalidaDadoElEstadoActualDelObjetoExcepcion();
+        throw new ArmaDeAsedioNoPuedeAtacarCuandoEstaDesmontadaExcepcion();
     }
 
     @Override

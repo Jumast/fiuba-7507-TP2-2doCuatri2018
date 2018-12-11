@@ -10,3 +10,10 @@
     -fx-font-weight: bold;
     /*-fx-text-fill: white;*/
 }
+
+
+Button{
+    /*-fx-background-color: red;*/
+    -fx-pref-height: 35px;
+    -fx-pref-width: 35px;
+}

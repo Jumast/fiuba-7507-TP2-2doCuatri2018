@@ -1,0 +1,10 @@
+
+.red{
+    -fx-image: url("/vista/imagenes/Aldeano_red.png");
+    -fx-alignment: center;
+}
+
+.blue{
+    -fx-image: url("/vista/imagenes/Aldeano_blue.png");
+    -fx-alignment: center;
+}

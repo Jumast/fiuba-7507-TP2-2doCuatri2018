@@ -1,0 +1,18 @@
+
+
+.red-montada{
+    -fx-image: url("/vista/imagenes/ArmaDeAsedio_montada_red.png");
+}
+
+.blue-montada{
+    -fx-image: url("/vista/imagenes/ArmaDeAsedio_montada_blue.png");
+}
+
+
+.red-desmontada{
+    -fx-image: url("/vista/imagenes/ArmaDeAsedio__desmontada_red.png");
+}
+
+.blue-desmontada{
+    -fx-image: url("/vista/imagenes/ArmaDeAsedio_desmontada_blue.png");
+}

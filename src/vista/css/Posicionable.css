@@ -14,3 +14,24 @@ AnchorPane:pressed{
     -fx-border-width: 2;
     -fx-border-color: green;
 }
+
+GridPane:hover{
+    -fx-border-width: 2;
+    -fx-border-color: black;
+}
+
+GridPane:pressed{
+    -fx-border-width: 2;
+    -fx-border-color: green;
+}
+
+.progress-bar > .bar {
+    -fx-background-insets: 1 3 2 3;
+    -fx-padding: 0.35em;
+}
+
+ImageView{
+    -fx-alignment: center;
+    -fx-background-repeat: stretch;
+}
+
