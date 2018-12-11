@@ -73,6 +73,13 @@ public class MapaControl extends ScrollPane {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        this.setFitToHeight(true);
+        this.setFitToWidth(true);
+
+        this.prefHeight(this.mapa.getAlto() * 50);
+        this.prefWidth(this.mapa.getAncho() * 50);
+
     }
 
 

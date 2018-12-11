@@ -6,8 +6,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root type="ScrollPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
-  <GridPane fx:id="mapaGrandeGridPane" alignment="CENTER" onDragDropped="#dragDropped" onDragOver="#dragOver" styleClass="fondo" />
+<fx:root type="ScrollPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
+         pannable="true" vbarPolicy="NEVER" hbarPolicy="NEVER">
+
+  <GridPane fx:id="mapaGrandeGridPane" alignment="CENTER"
+            onDragDropped="#dragDropped" onDragOver="#dragOver" styleClass="fondo" />
+
   <stylesheets>
     <URL value="@../css/Mapa.css" />
   </stylesheets>
