@@ -14,6 +14,8 @@ import modelo.IPosicionable;
 import modelo.posicion.Posicion;
 import modelo.unidades.Aldeano;
 import vista.controles.AldeanoBotonera;
+import vista.controles.AldeanoImagen;
+import vista.controles.AldeanoVista;
 import vista.controles.MapaControl;
 
 import java.net.URL;
@@ -27,8 +29,25 @@ public class AldeanoController implements IPosicionableController, Initializable
     @FXML private ImageView imageView;
 
     AldeanoBotonera botonera;
-    private String estado = "seleccionable";
+    private String estado = "";
 
+    private Aldeano aldeano;
+    private String color;
+    private MapaControl mapaControl;
+    private IJuegoController juegoController;
+    private String dueño;
+    private final AldeanoImagen imagen;
+
+    public AldeanoController(Aldeano aldeano, String color, MapaControl mapaControl, IJuegoController juegoController, String dueño){
+        this.aldeano = aldeano;
+        this.color = color;
+        this.mapaControl = mapaControl;
+        this.juegoController = juegoController;
+        this.dueño = dueño;
+
+       this.botonera = new AldeanoBotonera(aldeano, mapaControl);
+       this.imagen = new AldeanoImagen(this.aldeano);
+    }
 
     private Consumer<Aldeano> accion = (aldeano) -> {};
     public void onClicked(Consumer<Aldeano> accion){
@@ -41,22 +60,6 @@ public class AldeanoController implements IPosicionableController, Initializable
         this.estado = "ataquePotencial";
     }
     public void estadoSeleccionable(){
-        this.estado = "seleccionable";
-    }
-
-    private Aldeano aldeano;
-    private String color;
-    private MapaControl mapaControl;
-    private IJuegoController juegoController;
-
-    public AldeanoController(Aldeano aldeano, String color, MapaControl mapaControl, IJuegoController juegoController){
-        this.aldeano = aldeano;
-        this.color = color;
-        this.mapaControl = mapaControl;
-        this.juegoController = juegoController;
-
-        AldeanoBotonera botonera = new AldeanoBotonera(aldeano, mapaControl);
-        this.botonera = botonera;
     }
 
     @Override
@@ -75,31 +78,32 @@ public class AldeanoController implements IPosicionableController, Initializable
     }
 
     public void handleClick(MouseEvent mouseEvent) {
+        this.juegoController.setImagen(this.imagen);
 
-        if(this.estado.equals("seleccionable")){
-            this.juegoController.setBotonera(botonera);
+        if( (this.juegoController.esDelJugador(this.dueño)) ){
+            this.juegoController.setBotonera(this.botonera);
+            this.estado = "";
         }
 
-        if(this.estado.equals("ataquePotencial")){
+        else {
+            if (this.estado.equals("ataquePotencial")) {
+                this.estado = "";
+                try {
+                    this.atacante.atacar(this.aldeano);
+                    new Alert(Alert.AlertType.INFORMATION, "Ataque concretado").show();
+                    this.imagen.actualizarUI();
+                }
 
-           try {
-               this.atacante.atacar(this.aldeano);
-               new Alert(Alert.AlertType.INFORMATION, "Ataque concretado").show();
-               this.botonera.actualizarUI();
+                catch (Exception e) {
+                    new Alert(Alert.AlertType.INFORMATION, e.getMessage()).show();
+                }
 
-               this.accion.accept(this.aldeano);
-           }
-           catch (Exception e){
-               new Alert(Alert.AlertType.INFORMATION, e.getMessage()).show();
-           }
-
-           finally {
-               this.mapaControl.estadoSeleccionable();
-           }
-
+                finally {
+                    this.mapaControl.estadoSeleccionable();
+                }
+            }
+            this.juegoController.cleanBotonera();
         }
-
-
 
     }
 

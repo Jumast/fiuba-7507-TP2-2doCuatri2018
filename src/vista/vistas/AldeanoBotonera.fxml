@@ -16,24 +16,8 @@
     </columnConstraints>
 
     <VBox GridPane.valignment="CENTER">
-        <Label fx:id="nombreLabel" GridPane.rowIndex="0" alignment="CENTER" maxWidth="Infinity"/>
 
         <GridPane GridPane.valignment="CENTER" fx:id="botoneraGridPane">
-
-            <GridPane GridPane.columnIndex="0" GridPane.halignment="center">
-
-                <GridPane GridPane.rowIndex="0">
-                    <ProgressBar fx:id="vidaProgressBar" GridPane.rowIndex="0"/>
-                    <Label fx:id="vidaLabel" GridPane.rowIndex="0" textAlignment="CENTER" GridPane.halignment="center"/>
-
-                </GridPane>
-
-                <ImageView fx:id="imagenPosicionable" GridPane.rowIndex="1" fitHeight="60" fitWidth="40"
-                           GridPane.halignment="CENTER">
-                    <Image url="/vista/imagenes/Aldeano_blue.png"/>
-                </ImageView>
-
-            </GridPane>
 
             <fx:include fx:id="botoneraMovimiento" source="MovimientoBotonera.fxml" GridPane.columnIndex="1"/>
 
@@ -42,7 +26,6 @@
         </GridPane>
 
     </VBox>
-
 
 
     <stylesheets>

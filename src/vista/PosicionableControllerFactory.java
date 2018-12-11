@@ -29,7 +29,7 @@ public class PosicionableControllerFactory {
 
 
     public IPosicionableController crearControlador(Aldeano aldeano){
-        return new AldeanoController(aldeano, this.color, this.mapaControl, this.juegoControl);
+        return new AldeanoController(aldeano, this.color, this.mapaControl, this.juegoControl, this.dueño);
 
     }
 

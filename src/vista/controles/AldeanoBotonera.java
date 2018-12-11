@@ -18,18 +18,12 @@ import java.util.ResourceBundle;
 
 public class AldeanoBotonera extends GridPane implements Initializable {
 
-
-    @FXML private ProgressBar vidaProgressBar;
-    @FXML private Label vidaLabel;
-    @FXML private Label nombreLabel;
     private Aldeano aldeano;
-    private double vidaInicial;
 
     public AldeanoBotonera(Aldeano aldeano, MapaControl mapa){
 
         super();
         this.aldeano = aldeano;
-        this.vidaInicial = aldeano.getVida();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/vistas/AldeanoBotonera.fxml"));
         loader.setRoot(this);
@@ -65,26 +59,6 @@ public class AldeanoBotonera extends GridPane implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.setVidaLabel();
-        this.vidaProgressBar.setProgress(this.obtenerProgresoDeVida());
-        this.nombreLabel.setText(this.aldeano.getClass().getSimpleName());
-    }
-
-    private double obtenerProgresoDeVida(){
-        return this.aldeano.getVida() / this.vidaInicial;
-    }
-    private void setVidaLabel(){
-        String vidaInicial = String.valueOf((int)this.vidaInicial);
-        String vidaActual = String.valueOf(this.aldeano.getVida());
-        String texto = String.format("Vida: %s/%s", vidaActual, vidaInicial);
-
-        this.vidaLabel.setText(texto);
-
-    }
-
-    public void actualizarUI(){
-        this.vidaProgressBar.setProgress(this.obtenerProgresoDeVida());
-        this.setVidaLabel();
     }
 
 }
