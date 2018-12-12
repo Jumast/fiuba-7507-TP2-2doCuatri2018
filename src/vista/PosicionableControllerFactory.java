@@ -38,11 +38,11 @@ public class PosicionableControllerFactory {
     }
 
     public IPosicionableController crearControlador(Castillo castillo){
-        return new CastilloController(castillo, this.color, mapaControl, this.juegoControl);
+        return new CastilloController(castillo, this.color, mapaControl, this.juegoControl, this.dueño);
     }
 
     public IPosicionableController crearControlador(PlazaCentral plazaCentral){
-        return new PlazaCentralController(plazaCentral, this.color, mapaControl, this.juegoControl);
+        return new PlazaCentralController(plazaCentral, this.color, mapaControl, this.juegoControl, this.dueño);
     }
 
     public IPosicionableController crearControlador(Espadachin espadachin){
@@ -58,7 +58,7 @@ public class PosicionableControllerFactory {
     }
 
     public IPosicionableController crearControlador(Cuartel cuartel){
-        return new CuartelControler(cuartel, this.color, this.mapaControl, this.juegoControl);
+        return new CuartelControler(cuartel, this.color, this.mapaControl, this.juegoControl, this.dueño);
     }
 
 }

@@ -5,6 +5,9 @@ import modelo.unidades.Arquero;
 import vista.controles.MapaControl;
 import vista.utilidades.ReproductorDeSonido;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 
 public class ArqueroBotonera extends UnidadBotonera<Arquero> {
 
@@ -30,5 +33,11 @@ public class ArqueroBotonera extends UnidadBotonera<Arquero> {
         mapa.estadoSeleccionable();
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
 
+    @Override
+    public void actualizarUI(){
+    }
 }

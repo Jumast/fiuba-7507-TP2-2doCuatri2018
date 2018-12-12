@@ -33,7 +33,7 @@ public class ArmaDeAsedioBotonera extends UnidadBotonera<ArmaDeAsedio> {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        super.initialize(url, resourceBundle);
+        //super.initialize(url, resourceBundle);
         this.buttonDesmontar.setDisable(true);
         this.buttonAtacar.setDisable(true);
     }
@@ -76,5 +76,9 @@ public class ArmaDeAsedioBotonera extends UnidadBotonera<ArmaDeAsedio> {
     @Override
     protected FXMLLoader getLoader() {
         return new FXMLLoader(getClass().getResource("/vista/vistas/ArmaDeAsedioBotonera.fxml"));
+    }
+
+    @Override
+    public void actualizarUI(){
     }
 }

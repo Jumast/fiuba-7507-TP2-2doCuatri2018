@@ -1,33 +1,34 @@
-package vista.controles;
+package vista.controles.botoneras.unidades;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.GridPane;
-import modelo.unidades.Espadachin;
-
+import modelo.Unidad;
+import vista.controles.botoneras.Botonera;
+import javafx.fxml.FXMLLoader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EspadachinImagen extends GridPane implements Initializable {
 
-    private final Espadachin espadachin;
-    private double vidaInicial;
+abstract public class UnidadVista<TUnidad extends Unidad> extends Botonera implements Initializable  {
 
     @FXML private ProgressBar vidaProgressBar;
     @FXML private Label vidaLabel;
     @FXML private Label nombreLabel;
+    protected TUnidad unidad;
+    private double vidaInicial;
 
-    public EspadachinImagen(Espadachin espadachin){
+    protected abstract FXMLLoader getLoader();
+
+    public UnidadVista(TUnidad unidad){
 
         super();
-        this.espadachin = espadachin;
-        this.vidaInicial = espadachin.getVida();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/vistas/EspadachinImagen.fxml"));
+        this.vidaInicial = unidad.getVida();
+        this.unidad = unidad;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/vistas/AldeanoImagen.fxml"));
         loader.setRoot(this);
         loader.setController(this);
 
@@ -43,17 +44,15 @@ public class EspadachinImagen extends GridPane implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.setVidaLabel();
         this.vidaProgressBar.setProgress(this.obtenerProgresoDeVida());
-        this.nombreLabel.setText(this.espadachin.getClass().getSimpleName());
+        this.nombreLabel.setText(this.unidad.getClass().getSimpleName());
     }
-
 
     private double obtenerProgresoDeVida(){
-        return this.espadachin.getVida() / this.vidaInicial;
+        return this.unidad.getVida() / this.vidaInicial;
     }
-
     private void setVidaLabel(){
         String vidaInicial = String.valueOf((int)this.vidaInicial);
-        String vidaActual = String.valueOf(this.espadachin.getVida());
+        String vidaActual = String.valueOf(this.unidad.getVida());
         String texto = String.format("Vida: %s/%s", vidaActual, vidaInicial);
 
         this.vidaLabel.setText(texto);
@@ -64,6 +63,4 @@ public class EspadachinImagen extends GridPane implements Initializable {
         this.vidaProgressBar.setProgress(this.obtenerProgresoDeVida());
         this.setVidaLabel();
     }
-
-
 }

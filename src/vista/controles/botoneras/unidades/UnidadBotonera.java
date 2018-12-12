@@ -12,17 +12,11 @@ import vista.controles.MapaControl;
 import vista.controles.botoneras.Botonera;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+
 
 public abstract class UnidadBotonera<TUnidad extends Unidad> extends Botonera implements Initializable {
 
-    @FXML
-    private ProgressBar vidaProgressBar;
-    @FXML private Label vidaLabel;
-    @FXML private Label nombreLabel;
     protected TUnidad unidad;
-    private double vidaInicial;
 
     protected abstract FXMLLoader getLoader();
 
@@ -30,7 +24,6 @@ public abstract class UnidadBotonera<TUnidad extends Unidad> extends Botonera im
 
         super();
         this.unidad = unidad;
-        this.vidaInicial = unidad.getVida();
 
         FXMLLoader loader = this.getLoader();
         loader.setRoot(this);
@@ -63,29 +56,4 @@ public abstract class UnidadBotonera<TUnidad extends Unidad> extends Botonera im
             throw new RuntimeException(e);
         }
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.setVidaLabel();
-        this.vidaProgressBar.setProgress(this.obtenerProgresoDeVida());
-        this.nombreLabel.setText(this.unidad.getClass().getSimpleName());
-    }
-
-    private double obtenerProgresoDeVida(){
-        return this.unidad.getVida() / this.vidaInicial;
-    }
-    private void setVidaLabel(){
-        String vidaInicial = String.valueOf((int)this.vidaInicial);
-        String vidaActual = String.valueOf(this.unidad.getVida());
-        String texto = String.format("Vida: %s/%s", vidaActual, vidaInicial);
-
-        this.vidaLabel.setText(texto);
-
-    }
-
-    public void actualizarUI(){
-        this.vidaProgressBar.setProgress(this.obtenerProgresoDeVida());
-        this.setVidaLabel();
-    }
-
 }

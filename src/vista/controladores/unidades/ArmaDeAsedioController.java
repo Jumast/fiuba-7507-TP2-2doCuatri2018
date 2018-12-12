@@ -6,6 +6,7 @@ import vista.controladores.IJuegoController;
 import vista.controles.botoneras.unidades.ArmaDeAsedioBotonera;
 import vista.controles.botoneras.Botonera;
 import vista.controles.MapaControl;
+import vista.controles.botoneras.unidades.ArmaDeAsedioImagen;
 import vista.utilidades.ReproductorDeSonido;
 
 import java.net.URL;
@@ -15,16 +16,18 @@ public class ArmaDeAsedioController extends AtacableController<ArmaDeAsedio> {
 
 
     ArmaDeAsedioBotonera botonera;
+    private ArmaDeAsedioImagen imagen;
 
     @Override
     protected Botonera getBotonera() {
         return this.botonera;
     }
 
-    public ArmaDeAsedioController(ArmaDeAsedio armaDeAsedio, String color, MapaControl mapaControl, IJuegoController juegoController){
-        super(armaDeAsedio, color, mapaControl, juegoController);
+    public ArmaDeAsedioController(ArmaDeAsedio armaDeAsedio, String color, MapaControl mapaControl, IJuegoController juegoController, String dueño){
+        super(armaDeAsedio, color, mapaControl, juegoController, dueño);
 
         this.botonera = new ArmaDeAsedioBotonera(armaDeAsedio, mapaControl, this);
+        this.imagen = new ArmaDeAsedioImagen(armaDeAsedio);
     }
 
     @Override
@@ -52,5 +55,6 @@ public class ArmaDeAsedioController extends AtacableController<ArmaDeAsedio> {
         new ReproductorDeSonido("montar_asedio.wav").reproducirSonido();
     }
 
-
+    @Override
+    protected Botonera getImagen(){return this.imagen;}
 }

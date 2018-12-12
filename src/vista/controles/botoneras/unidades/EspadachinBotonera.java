@@ -5,6 +5,9 @@ import modelo.unidades.Espadachin;
 import vista.controles.MapaControl;
 import vista.utilidades.ReproductorDeSonido;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 public class EspadachinBotonera extends UnidadBotonera<Espadachin> {
 
     private MapaControl mapa;
@@ -29,5 +32,11 @@ public class EspadachinBotonera extends UnidadBotonera<Espadachin> {
         mapa.estadoSeleccionable();
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
 
+    @Override
+    public void actualizarUI(){
+    }
 }

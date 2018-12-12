@@ -11,8 +11,8 @@ public class CuartelControler extends AtacableController<Cuartel> {
 
     private Botonera botonera = null;
 
-    public CuartelControler(Cuartel edificio, String color, MapaControl mapaControl, IJuegoController juegoController) {
-        super(edificio, color, mapaControl, juegoController);
+    public CuartelControler(Cuartel edificio, String color, MapaControl mapaControl, IJuegoController juegoController, String dueño) {
+        super(edificio, color, mapaControl, juegoController, dueño);
 
         this.botonera = new CuartelBotonera(edificio, mapaControl);
     }
@@ -22,6 +22,9 @@ public class CuartelControler extends AtacableController<Cuartel> {
     {
         return this.botonera;
     }
+
+    @Override
+    protected Botonera getImagen(){return this.botonera;}
 
     @Override
     protected String getWavFile() {

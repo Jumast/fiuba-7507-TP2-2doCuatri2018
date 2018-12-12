@@ -13,13 +13,6 @@
 
         <Label fx:id="nombreLabel" GridPane.rowIndex="0" alignment="CENTER" maxWidth="Infinity"/>
 
-
-            <!--<columnConstraints>-->
-            <!--<ColumnConstraints percentWidth="50.0"/>-->
-            <!--<ColumnConstraints percentWidth="50.0"/>-->
-            <!--<ColumnConstraints percentWidth="50.0"/>-->
-            <!--</columnConstraints>-->
-
             <GridPane GridPane.columnIndex="0">
 
                 <GridPane GridPane.rowIndex="0" GridPane.halignment="center">

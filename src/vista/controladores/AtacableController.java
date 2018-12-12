@@ -25,27 +25,34 @@ public abstract class AtacableController<TAtacable extends IAtacable> implements
 
     //    Botonera botonera;
     abstract protected Botonera getBotonera();
-    private String estado = "seleccionable";
 
-    private IAtacante atacante;
+    abstract protected Botonera getImagen();
+
     public void estadoAtaquePotencial(IAtacante atacante){
         this.atacante = atacante;
         this.estado = "ataquePotencial";
     }
+
     public void estadoSeleccionable(){
         this.estado = "seleccionable";
     }
+
+    private String estado = "seleccionable";
+
+    private IAtacante atacante;
 
     private TAtacable unidad;
     protected String color;
     private MapaControl mapaControl;
     private IJuegoController juegoController;
+    private String dueño;
 
-    public AtacableController(TAtacable unidad, String color, MapaControl mapaControl, IJuegoController juegoController){
+    public AtacableController(TAtacable unidad, String color, MapaControl mapaControl, IJuegoController juegoController, String dueño){
         this.unidad = unidad;
         this.color = color;
         this.mapaControl = mapaControl;
         this.juegoController = juegoController;
+        this.dueño = dueño;
 
     }
 
@@ -65,30 +72,32 @@ public abstract class AtacableController<TAtacable extends IAtacable> implements
     }
 
     public void handleClick(MouseEvent mouseEvent) {
+        this.juegoController.setImagen(this.getImagen());
 
-        if(this.estado.equals("seleccionable")){
+        if(this.juegoController.esDelJugador(this.dueño)){
             this.juegoController.setBotonera(this.getBotonera());
         }
 
-        if(this.estado.equals("ataquePotencial")){
+        else {
+            if (this.estado.equals("ataquePotencial")) {
+                this.estadoSeleccionable();
+                try {
+                    this.atacante.atacar(this.unidad);
+                    new Alert(Alert.AlertType.INFORMATION, "Ataque concretado").show();
+                    this.getImagen().actualizarUI();
+                    this.playSound();
 
-            try {
-                this.atacante.atacar(this.unidad);
-                new Alert(Alert.AlertType.INFORMATION, "Ataque concretado").show();
-                this.getBotonera().actualizarUI();
-                this.playSound();
-            }
-            catch (Exception e){
-                new Alert(Alert.AlertType.INFORMATION, e.getMessage()).show();
+                } catch (Exception e) {
+                    new Alert(Alert.AlertType.INFORMATION, e.getMessage()).show();
+
+                } finally {
+                    this.mapaControl.estadoSeleccionable();
+                }
+
             }
 
-            finally {
-                this.mapaControl.estadoSeleccionable();
-            }
-
+            this.juegoController.cleanBotonera();
         }
-
-
 
     }
 
