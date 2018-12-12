@@ -29,7 +29,7 @@ public class AldeanoController implements IPosicionableController, Initializable
     @FXML private ImageView imageView;
 
     AldeanoBotonera botonera;
-    private String estado = "";
+    private String estado = "seleccionable";
 
     private Aldeano aldeano;
     private String color;
@@ -84,12 +84,11 @@ public class AldeanoController implements IPosicionableController, Initializable
 
         if( (this.juegoController.esDelJugador(this.dueño)) ){
             this.juegoController.setBotonera(this.botonera);
-            this.estado = "";
         }
 
         else {
             if (this.estado.equals("ataquePotencial")) {
-                this.estado = "";
+                this.estado = "seleccionable";
                 try {
                     this.atacante.atacar(this.aldeano);
                     new Alert(Alert.AlertType.INFORMATION, "Ataque concretado").show();

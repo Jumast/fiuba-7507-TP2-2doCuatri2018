@@ -34,7 +34,7 @@ public class ArqueroController implements IPosicionableController, Initializable
     private String dueño;
     private final ArqueroImagen imagen;
 
-    private String estado = "";
+    private String estado = "seleccionable";
 
     public ArqueroController(Arquero arquero, String color, MapaControl mapaControl, IJuegoController juegoController, String dueño){
         this.arquero = arquero;
@@ -77,7 +77,7 @@ public class ArqueroController implements IPosicionableController, Initializable
 
         else {
             if (this.estado.equals("ataquePotencial")) {
-                this.estado = "";
+                this.estado = "seleccionable";
                 try {
                     this.atacante.atacar(this.arquero);
                     new Alert(Alert.AlertType.INFORMATION, "Ataque concretado").show();

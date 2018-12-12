@@ -37,7 +37,7 @@ public class EspadachinController implements IPosicionableController, Initializa
     private String dueño;
     private final EspadachinImagen imagen;
 
-    private String estado = "";
+    private String estado = "seleccionable";
 
     public EspadachinController(Espadachin espadachin, String color, MapaControl mapaControl, IJuegoController juegoController, String dueño){
         this.espadachin = espadachin;
@@ -108,6 +108,7 @@ public class EspadachinController implements IPosicionableController, Initializa
     }
 
     public void estadoSeleccionable(){
+        this.estado = "seleccionable";
     }
 
     private void playSound(){
