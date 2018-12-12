@@ -22,13 +22,11 @@
 .titulo{
     -fx-text-fill: whitesmoke;
     -fx-font-size: 20;
-    -fx-alignment: stretch;
 }
 
 .descripcion{
     -fx-text-fill: whitesmoke;
     -fx-font-size: 14;
-    -fx-alignment: stretch;
 }
 
 .nombreJuego{

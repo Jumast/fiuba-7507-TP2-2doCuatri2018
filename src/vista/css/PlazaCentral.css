@@ -1,0 +1,21 @@
+
+.red{
+    -fx-image: url("/vista/imagenes/PlazaCentral_red.png");
+    /*-fx-alignment: center;*/
+
+}
+
+.blue{
+    -fx-image: url("/vista/imagenes/PlazaCentral_blue.png");
+    -fx-alignment: center;
+}
+
+ImageView{
+    -fx-alignment: stretch;
+    -fx-fit-to-height: true;
+    -fx-fit-to-width: true;
+}
+
+Image{
+    -fx-fit-to-width: true;
+}

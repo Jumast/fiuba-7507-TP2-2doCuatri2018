@@ -48,11 +48,6 @@ public class Main extends Application {
 
         try
         {
-
-//            String file = "/vista/sonidos/intro.wav";
-//            URL path = getClass().getResource(file);
-//            AudioClip ac = new AudioClip(path.toString());
-
             this.audioClip.play(0.3);
 
         }

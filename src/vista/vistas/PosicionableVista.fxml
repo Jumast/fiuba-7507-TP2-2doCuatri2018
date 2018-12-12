@@ -17,18 +17,17 @@
         <RowConstraints percentHeight="100"/>
     </rowConstraints>
 
-    <GridPane fx:id="root" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-        <columnConstraints>
-            <ColumnConstraints percentWidth="100"/>
-        </columnConstraints>
+        <GridPane fx:id="root" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="100"/>
+            </columnConstraints>
 
-        <rowConstraints>
-            <RowConstraints percentHeight="100"/>
-        </rowConstraints>
+            <rowConstraints>
+                <RowConstraints percentHeight="100"/>
+            </rowConstraints>
 
-        <ImageView fx:id="imageView" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.halignment="CENTER"/>
-    </GridPane>
-
+            <ImageView fx:id="imageView" GridPane.valignment="CENTER" GridPane.halignment="CENTER"/>
+        </GridPane>
 
 
     <stylesheets>

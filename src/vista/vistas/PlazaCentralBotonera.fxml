@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import java.net.URL?>
+<fx:root fx:id="root" type="GridPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+
+    <columnConstraints>
+        <ColumnConstraints percentWidth="100.0"/>
+    </columnConstraints>
+
+    <VBox GridPane.valignment="CENTER">
+        <Label fx:id="nombreLabel" GridPane.rowIndex="0" alignment="CENTER" maxWidth="Infinity"/>
+
+        <GridPane GridPane.valignment="CENTER" fx:id="botoneraGridPane">
+
+            <GridPane GridPane.columnIndex="0" GridPane.halignment="center">
+
+                <GridPane GridPane.rowIndex="0">
+                    <ProgressBar fx:id="vidaProgressBar" GridPane.rowIndex="0"/>
+                    <Label fx:id="vidaLabel" GridPane.rowIndex="0" textAlignment="CENTER" GridPane.halignment="center"/>
+
+                </GridPane>
+
+                <ImageView fx:id="imagenPosicionable" GridPane.rowIndex="1" fitHeight="60" fitWidth="40"
+                           GridPane.halignment="CENTER">
+                    <Image url="/vista/imagenes/PlazaCentral_blue.png"/>
+                </ImageView>
+
+            </GridPane>
+
+        </GridPane>
+
+    </VBox>
+
+
+
+    <stylesheets>
+        <URL value="@/vista/css/Botonera.css"/>
+    </stylesheets>
+
+</fx:root>

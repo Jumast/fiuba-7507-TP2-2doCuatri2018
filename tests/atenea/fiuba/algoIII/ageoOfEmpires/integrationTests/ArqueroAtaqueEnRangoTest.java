@@ -47,19 +47,19 @@ public class ArqueroAtaqueEnRangoTest {
 
         ArrayList collection = new ArrayList();
 
-        // Unidades a distancia 1
+        // unidades a distancia 1
         collection.add(new Object[]{arquero, new Aldeano(posicionADistancia1), DANIO_ESPERADO_UNIDADES});
         collection.add(new Object[]{arquero, new Espadachin(posicionADistancia1, Mockito.mock(IEstrategiaAtaque.class)), DANIO_ESPERADO_UNIDADES});
         collection.add(new Object[]{arquero, new Arquero(posicionADistancia1, Mockito.mock(IEstrategiaAtaque.class)), DANIO_ESPERADO_UNIDADES});
         collection.add(new Object[]{arquero, new ArmaDeAsedio(posicionADistancia1, Mockito.mock(IEstrategiaAtaque.class)), DANIO_ESPERADO_UNIDADES});
 
-        // Unidades a distancia 2
+        // unidades a distancia 2
         collection.add(new Object[]{arquero, new Aldeano(posicionADistancia2), DANIO_ESPERADO_UNIDADES});
         collection.add(new Object[]{arquero, new Espadachin(posicionADistancia2, Mockito.mock(IEstrategiaAtaque.class)), DANIO_ESPERADO_UNIDADES});
         collection.add(new Object[]{arquero, new Arquero(posicionADistancia2, Mockito.mock(IEstrategiaAtaque.class)), DANIO_ESPERADO_UNIDADES});
         collection.add(new Object[]{arquero, new ArmaDeAsedio(posicionADistancia2, Mockito.mock(IEstrategiaAtaque.class)), DANIO_ESPERADO_UNIDADES});
 
-        // Unidades a distancia 3
+        // unidades a distancia 3
         collection.add(new Object[]{arquero, new Aldeano(posicionADistancia3),DANIO_ESPERADO_UNIDADES});
         collection.add(new Object[]{arquero, new Espadachin(posicionADistancia3, Mockito.mock(IEstrategiaAtaque.class)), DANIO_ESPERADO_UNIDADES});
         collection.add(new Object[]{arquero, new Arquero(posicionADistancia3, Mockito.mock(IEstrategiaAtaque.class)), DANIO_ESPERADO_UNIDADES});

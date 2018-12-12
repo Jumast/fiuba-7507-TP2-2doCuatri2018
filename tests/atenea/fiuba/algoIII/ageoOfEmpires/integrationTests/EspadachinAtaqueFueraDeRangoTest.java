@@ -37,7 +37,7 @@ public class EspadachinAtaqueFueraDeRangoTest {
 
         ArrayList collection = new ArrayList();
 
-        // Unidades a distancia 2
+        // unidades a distancia 2
         collection.add(new Object[]{espadachin, new Aldeano(posicionADistancia2), DANIO_ESPERADO});
         collection.add(new Object[]{espadachin, new Espadachin(posicionADistancia2, Mockito.mock(IEstrategiaAtaque.class)), DANIO_ESPERADO});
         collection.add(new Object[]{espadachin, new Arquero(posicionADistancia2, Mockito.mock(IEstrategiaAtaque.class)), DANIO_ESPERADO});

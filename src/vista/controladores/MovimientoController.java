@@ -7,6 +7,8 @@ import javafx.scene.input.MouseEvent;
 import modelo.IMovible;
 import modelo.movimiento.*;
 import vista.controles.MapaControl;
+import vista.utilidades.IReproductorDeSonido;
+import vista.utilidades.NullReproductorDeSonido;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,15 +21,23 @@ public class MovimientoController implements Initializable {
     private IMovible unidad;
     private IPosicionController posicionController;
 
+    private String sonido;
+    private IReproductorDeSonido reproductorDeSonido = new NullReproductorDeSonido();
+
     public MovimientoController(IMovible unidad, MapaControl mapa){
         this.mapa = mapa;
         this.unidad = unidad;
         this.posicionController = posicionController;
     }
 
+    public MovimientoController(IMovible unidad, MapaControl mapa, IReproductorDeSonido reproductorDeSonido){
+        this(unidad, mapa);
+        this.reproductorDeSonido = reproductorDeSonido;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.actualizarPosicion();;
+        this.actualizarPosicion();
     }
 
     private void actualizarPosicion(){
@@ -85,8 +95,10 @@ public class MovimientoController implements Initializable {
     }
 
     private void actualizarUI(){
+        this.reproductorDeSonido.reproducirSonido();
         this.mapa.dibujar();
         this.actualizarPosicion();
+
     }
 
 

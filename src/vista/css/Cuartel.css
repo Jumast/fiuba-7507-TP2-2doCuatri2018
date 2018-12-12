@@ -1,0 +1,11 @@
+
+.red{
+    -fx-image: url("/vista/imagenes/Cuartel_red.png");
+    /*-fx-alignment: center;*/
+
+}
+
+.blue{
+    -fx-image: url("/vista/imagenes/Cuartel_blue.png");
+    -fx-alignment: center;
+}

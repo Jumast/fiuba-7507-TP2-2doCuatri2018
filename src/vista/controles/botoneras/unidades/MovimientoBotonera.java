@@ -1,4 +1,4 @@
-package vista.controles;
+package vista.controles.botoneras.unidades;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

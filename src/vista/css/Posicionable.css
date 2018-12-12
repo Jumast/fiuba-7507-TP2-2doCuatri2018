@@ -1,20 +1,3 @@
-
-AnchorPane{
-    -fx-background-repeat: stretch;
-    -fx-background-position: center center;
-}
-
-
-AnchorPane:hover{
-    -fx-border-width: 2;
-    -fx-border-color: black;
-}
-
-AnchorPane:pressed{
-    -fx-border-width: 2;
-    -fx-border-color: green;
-}
-
 GridPane:hover{
     -fx-border-width: 2;
     -fx-border-color: black;
@@ -25,13 +8,17 @@ GridPane:pressed{
     -fx-border-color: green;
 }
 
-.progress-bar > .bar {
-    -fx-background-insets: 1 3 2 3;
-    -fx-padding: 0.35em;
-}
 
 ImageView{
     -fx-alignment: center;
     -fx-background-repeat: stretch;
+    /*-fx-fit-to-height: true;*/
+    /*-fx-fit-to-width: true;*/
+    /*-fx-max-width: 50;*/
+}
+
+.progress-bar > .bar {
+    -fx-background-insets: 1 3 2 3;
+    -fx-padding: 0.35em;
 }
 

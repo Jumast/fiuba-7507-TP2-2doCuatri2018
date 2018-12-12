@@ -11,10 +11,7 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import modelo.edificios.Castillo;
-import modelo.edificios.EstrategiaAtaqueArmaDeAsedio;
-import modelo.edificios.EstrategiaAtaqueCastillo;
-import modelo.edificios.PlazaCentral;
+import modelo.edificios.*;
 import modelo.juego.Juego;
 import modelo.juego.Jugador;
 import modelo.juego.Turno;
@@ -187,6 +184,14 @@ public class JuegoControl extends BorderPane implements Initializable, IJuegoCon
 
         IPosicionableController armaDeAsedioController = controllerFactory.crearControlador(armaDeAsedio);
         this.mapaControl.agregar(armaDeAsedioController);
+
+        // Cuartel
+        Posicion posicionCuartel = new PosicionCuadrado(Limite.SuperiorIzquierdo, new Casillero(10,1), 2);
+        Cuartel cuartel = new Cuartel(posicionCuartel, new UnidadesFabrica());
+        mapa.posicionar(cuartel);
+
+        IPosicionableController cuartelController = controllerFactory.crearControlador(cuartel);
+        this.mapaControl.agregar(cuartelController);
     }
 
     private void inicializarJugador2(String nombreJugador2){

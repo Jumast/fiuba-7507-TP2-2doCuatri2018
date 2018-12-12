@@ -1,0 +1,11 @@
+
+.red{
+    -fx-image: url("/vista/imagenes/Castillo_red.png");
+    /*-fx-alignment: center;*/
+
+}
+
+.blue{
+    -fx-image: url("/vista/imagenes/Castillo_blue.png");
+    -fx-alignment: center;
+}
