@@ -24,8 +24,8 @@ public class TurnoTest {
 
         Turno turno = new Turno(listaDeParticipantes);
 
-        String jugadorActual1 = turno.devolverJugadorActual();
-        String jugadorActual2 = turno.devolverJugadorActual();
+        String jugadorActual1 = turno.devolverJugadorActual().devolverNombre();
+        String jugadorActual2 = turno.devolverJugadorActual().devolverNombre();
         Assert.assertEquals(jugadorActual1, jugadorActual2);
     }
 
@@ -40,9 +40,9 @@ public class TurnoTest {
         listaDeParticipantes.add((jugadorPablo));
 
         Turno turno = new Turno(listaDeParticipantes);
-        String jugadorActual1 = turno.devolverJugadorActual();
+        String jugadorActual1 = turno.devolverJugadorActual().devolverNombre();
         turno.cambiarDeTurno();
-        String jugadorActual2 = turno.devolverJugadorActual();
+        String jugadorActual2 = turno.devolverJugadorActual().devolverNombre();
         Assert.assertNotEquals(jugadorActual1, jugadorActual2);
 
     }
@@ -58,10 +58,10 @@ public class TurnoTest {
         listaDeParticipantes.add((jugadorPablo));
 
         Turno turno = new Turno(listaDeParticipantes);
-        String jugadorActual1 = turno.devolverJugadorActual();
+        String jugadorActual1 = turno.devolverJugadorActual().devolverNombre();
         turno.cambiarDeTurno();
         turno.cambiarDeTurno();
-        String jugadorActual2 = turno.devolverJugadorActual();
+        String jugadorActual2 = turno.devolverJugadorActual().devolverNombre();
         Assert.assertEquals(jugadorActual1, jugadorActual2);
     }
 }

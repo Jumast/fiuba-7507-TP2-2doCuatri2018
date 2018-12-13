@@ -4,12 +4,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.AudioClip;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.scene.control.Label;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import modelo.edificios.*;
 import modelo.juego.Juego;
@@ -21,7 +21,6 @@ import vista.PosicionableControllerFactory;
 import javafx.scene.control.Button;
 import vista.controladores.*;
 
-import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -36,6 +35,8 @@ public class JuegoControl extends BorderPane implements Initializable, IJuegoCon
     private List<Jugador> listaDeParticipantes;
     private MapaControl mapaControl;
     private Turno turno;
+    private DescripcionesDeLosJugadores descripcionesDeLosJugadores;
+
 
     @FXML private GridPane botonera;
     @FXML private GridPane imagen;
@@ -44,6 +45,8 @@ public class JuegoControl extends BorderPane implements Initializable, IJuegoCon
 
     JuegoControl(Stage primaryStage, String nombreJugador1, String nombreJugador2) {
         this.listaDeParticipantes = new ArrayList();
+
+        this.descripcionesDeLosJugadores = new DescripcionesDeLosJugadores();
 
         this.primaryStage = primaryStage;
 
@@ -87,14 +90,14 @@ public class JuegoControl extends BorderPane implements Initializable, IJuegoCon
         this.inicializarJugador2(nombreJugador2);
 
         this.turno = new Turno(this.listaDeParticipantes);
-        this.fichaTecnica.setText(this.turno.devolverJugadorActual());
+        this.fichaTecnica.setText(this.turno.devolverJugadorActual().devolverNombre());
+
 
 //      mapaControl.dibujar();
         this.centerProperty().setValue(mapaControl);
         this.autosize();
 
     }
-
 
 
     @Override
@@ -146,6 +149,7 @@ public class JuegoControl extends BorderPane implements Initializable, IJuegoCon
         jugador.agregar(aldeano3);
 
         this.listaDeParticipantes.add(jugador);
+        this.descripcionesDeLosJugadores.agregarDescripcion(new DescripcionJugador(jugador.devolverNombre(),"red"));
 
         PosicionableControllerFactory controllerFactory = new PosicionableControllerFactory(this, this.mapaControl, "red", nombreJugador);
         IPosicionableController castilloController = controllerFactory.crearControlador(castillo);
@@ -224,6 +228,7 @@ public class JuegoControl extends BorderPane implements Initializable, IJuegoCon
         jugador.agregar(aldeano3);
 
         this.listaDeParticipantes.add(jugador);
+        this.descripcionesDeLosJugadores.agregarDescripcion(new DescripcionJugador(jugador.devolverNombre(),"blue"));
 
         PosicionableControllerFactory controllerFactory = new PosicionableControllerFactory(this, this.mapaControl, "blue", nombreJugador2);
         IPosicionableController castilloController = controllerFactory.crearControlador(castillo);
@@ -250,14 +255,14 @@ public class JuegoControl extends BorderPane implements Initializable, IJuegoCon
 
     public void cambioDeTurno(){
         this.turno.cambiarDeTurno();
-        this.fichaTecnica.setText(this.turno.devolverJugadorActual());
+        this.fichaTecnica.setText(this.turno.devolverJugadorActual().devolverNombre());
         this.imagen.getChildren().clear();
         this.botonera.getChildren().clear();
     }
 
     @Override
     public boolean esDelJugador(String dueño){
-        return (this.turno.devolverJugadorActual() == dueño);
+        return (this.turno.devolverJugadorActual().devolverNombre() == dueño);
     }
 
 
